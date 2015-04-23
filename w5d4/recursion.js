@@ -91,8 +91,8 @@ var makeChange = function(amount, coins) {
     var currentLargest = coins[i];
     if (currentLargest <= amount) {
       var newAmount = amount - currentLargest;
-
-      var coinsArray = [currentLargest].concat(makeChange(newAmount, coins.slice(i, coins.length)));
+      var bestWithoutLargest = makeChange(newAmount, coins.slice(i, coins.length));
+      var coinsArray = [currentLargest].concat(bestWithoutLargest);
 
       if (bestCoins.length === 0 || coinsArray.length < bestCoins.length) {
         bestCoins = coinsArray;
