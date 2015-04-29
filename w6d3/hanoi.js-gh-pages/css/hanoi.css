@@ -1,0 +1,80 @@
+html, body, ul, li,
+h1, h2, a, button, head {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+
+  background: transparent;
+  color: inherit;
+
+  font: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  background: white;
+}
+
+
+.group:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+ul {
+  list-style: none;
+}
+
+header {
+  display: block;
+  margin: auto;
+  width: 519px;
+  font-size: 36px;
+  font-weight: 700;
+  padding: 40px;
+}
+
+.board {
+  display: block;
+  width: 600px;
+  margin: auto;
+  padding: 20px 0;
+  background: #eee;
+}
+
+.tower {
+  float: left;
+  padding: 5px 30px;
+  margin: 0 20px;
+  width: 100px;
+  height: 60px;
+  background: #aaa;
+}
+
+.clicked-tower {
+  background: yellow;
+}
+
+.tower > li {
+  margin: auto;
+  height: 20px;
+  background: blue;
+}
+
+.tower > .empty {
+  background: transparent;
+}
+
+.one {
+  width: 30px;
+}
+
+.two {
+  width: 60px;
+}
+
+.three {
+  width: 90px;
+}
