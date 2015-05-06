@@ -5,9 +5,10 @@ JournalApp.Routers.PostsRouter = Backbone.Router.extend({
     "posts/:id" : "show",
     "rhoen" : "rhoen"
   },
-  initialize: function(options) {
-    this.$el = options.$el;
+  initialize: function () {
     this.posts = new JournalApp.Collections.Posts();
+    this.$content = $(".content");
+    this.$sidebar = $('.sidebar');
   },
 
   rhoen: function () {
@@ -17,15 +18,15 @@ JournalApp.Routers.PostsRouter = Backbone.Router.extend({
   newPost: function () {
     var post = new JournalApp.Models.Post();
     var formView = new JournalApp.Views.PostForm({model: post, collection: this.posts});
-    this.$el.html(formView.render().$el);
+    this.$content.html(formView.render().$el);
   },
 
   index: function () {
-    this.$el.empty();
+    $(".sidebar").empty();
     this.posts.fetch({
       success: function() {
         var postsIndexView = new JournalApp.Views.PostsIndex({collection: this.posts});
-        this.$el.append(postsIndexView.render().$el);
+        this.$sidebar.append(postsIndexView.render().$el);
       }.bind(this)
     });
   },
@@ -33,7 +34,7 @@ JournalApp.Routers.PostsRouter = Backbone.Router.extend({
   show: function (id) {
     this.posts.getOrFetch(id, function(post) {
       var postShow = new JournalApp.Views.PostShow({model: post});
-      this.$el.html(postShow.render().$el);
+      this.$content.html(postShow.render().$el);
     }.bind(this));
 
   }

@@ -11,6 +11,7 @@ JournalApp.Views.PostsIndex = Backbone.View.extend({
       var postView = new JournalApp.Views.ListItem({model: post, collection: this.collection});
       this.$el.append(postView.render().$el);
     }.bind(this));
+    this.$el.append('<a href="#/posts/new">New Post!</a>');
 
     return this;
   }

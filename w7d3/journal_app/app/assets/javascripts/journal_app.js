@@ -4,8 +4,7 @@ window.JournalApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-    var $el = $('.journal');
-    new JournalApp.Routers.PostsRouter({$el: $el});
+    new JournalApp.Routers.PostsRouter();
   }
 };
 
