@@ -16,9 +16,10 @@ JournalApp.Views.PostForm = Backbone.View.extend({
     event.preventDefault();
     var formData = $(event.currentTarget).serializeJSON();
     this.model = new JournalApp.Models.Post(formData);
-    this.model.save({
+    this.model.save({}, {
       success: function() {
-        this.collection.add(this.model);
+        console.log('success!');
+        this.collection.add(this.model, {merge: true});
         Backbone.history.navigate("", {trigger: true});
       }.bind(this),
 
