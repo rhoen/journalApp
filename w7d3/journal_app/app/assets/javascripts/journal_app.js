@@ -4,19 +4,12 @@ window.JournalApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('hello world');
+    var $el = $('.journal');
+    new JournalApp.Routers.PostsRouter({$el: $el});
   }
 };
 
 $(document).ready(function(){
   JournalApp.initialize();
-  console.log("hello world");
-  var posts = new JournalApp.Collections.Posts();
-  posts.fetch({
-    success: function() {
-      var postsIndexView = new JournalApp.Views.PostsIndex({collection: posts});
-      console.log(postsIndexView.render().$el);
-      $('body').append(postsIndexView.render().$el);
-    }
-  });
+  Backbone.history.start();
 });

@@ -1,16 +1,16 @@
-JournalApp.Views.Post = Backbone.View.extend({
-  tagName: 'li',
-  template: JST['posts/listItem'],
+JournalApp.Views.PostShow = Backbone.View.extend({
+  template: JST['posts/show'],
+
   events: {
     "click button" : "deletePost"
   },
-  render: function (){
-    this.$el.append(this.template({post: this.model}));
+
+  render: function() {
+    this.$el.html(template({post: this.model}));
     return this;
   },
 
   deletePost: function () {
-    debugger;
     this.model.destroy({
       success: function() {
         this.collection.remove(this.model);
