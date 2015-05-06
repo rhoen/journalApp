@@ -2,11 +2,17 @@ JournalApp.Views.PostShow = Backbone.View.extend({
   template: JST['posts/show'],
 
   events: {
-    "click button" : "deletePost"
+    "click button" : "deletePost",
+    "click a" : "navigate"
+  },
+
+  navigate: function (event) {
+    event.preventDefault();
+    Backbone.history.navigate($(event.currentTarget).attr("href"), {trigger: true});
   },
 
   render: function() {
-    this.$el.html(template({post: this.model}));
+    this.$el.html(this.template({post: this.model}));
     return this;
   },
 
