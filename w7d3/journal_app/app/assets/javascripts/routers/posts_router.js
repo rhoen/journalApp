@@ -1,18 +1,31 @@
 JournalApp.Routers.PostsRouter = Backbone.Router.extend({
   routes: {
     "" : "index",
-    "posts/:id" : "show"
+    "posts/new" : "newPost",
+    "posts/:id" : "show",
+    "rhoen" : "rhoen"
   },
   initialize: function(options) {
     this.$el = options.$el;
     this.posts = new JournalApp.Collections.Posts();
   },
+
+  rhoen: function () {
+    alert('HI');
+  },
+
+  newPost: function () {
+    console.log('please LOG');
+    var post = new JournalApp.Models.Post();
+    var formView = new JournalApp.Views.PostForm({model: post});
+    this.$el.html(formView.render().$el);
+  },
+
   index: function () {
     this.$el.empty();
     this.posts.fetch({
       success: function() {
         var postsIndexView = new JournalApp.Views.PostsIndex({collection: this.posts});
-        console.log(postsIndexView.render().$el);
         this.$el.append(postsIndexView.render().$el);
       }.bind(this)
     });
