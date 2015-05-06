@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+
+html, body, h1, h2, section, a, ul, li, div {
+  background: transparent;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+section {
+  border: 2px solid black;
+}
+.sidebar {
+  display: block;
+  float: left;
+  background: green;
+  width: 200px;
+}
+
+.content {
+  display: block;
+  float: right;
+  background: yellow;
+}

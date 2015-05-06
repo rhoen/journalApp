@@ -6,7 +6,6 @@ JournalApp.Routers.PostsRouter = Backbone.Router.extend({
     "rhoen" : "rhoen"
   },
   initialize: function () {
-    this.posts = new JournalApp.Collections.Posts();
     this.$content = $(".content");
     this.$sidebar = $('.sidebar');
   },
@@ -16,12 +15,17 @@ JournalApp.Routers.PostsRouter = Backbone.Router.extend({
   },
 
   newPost: function () {
-    var post = new JournalApp.Models.Post();
-    var formView = new JournalApp.Views.PostForm({model: post, collection: this.posts});
-    this.$content.html(formView.render().$el);
+    if (!this.posts) {
+      this.index({callback: this.newPost.bind(this)});
+    } else {
+      var post = new JournalApp.Models.Post();
+      var formView = new JournalApp.Views.PostForm({model: post, collection: this.posts});
+      this.$content.html(formView.render().$el);
+    }
   },
 
-  index: function () {
+  index: function (options) {
+    this.posts = new JournalApp.Collections.Posts();
     $(".sidebar").empty();
     this.posts.fetch({
       success: function() {
@@ -29,13 +33,18 @@ JournalApp.Routers.PostsRouter = Backbone.Router.extend({
         this.$sidebar.append(postsIndexView.render().$el);
       }.bind(this)
     });
+    options && options.callback();
   },
 
   show: function (id) {
-    this.posts.getOrFetch(id, function(post) {
-      var postShow = new JournalApp.Views.PostShow({model: post});
-      this.$content.html(postShow.render().$el);
-    }.bind(this));
+    if (!this.posts) {
+      this.index({callback: this.show.bind(this, id)});
+    } else {
+      this.posts.getOrFetch(id, function(post) {
+        var postShow = new JournalApp.Views.PostShow({model: post});
+        this.$content.html(postShow.render().$el);
+      }.bind(this));
+    }
 
   }
 });
