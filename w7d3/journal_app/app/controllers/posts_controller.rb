@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   wrap_parameters false
 
   def index
+    @posts = Post.all
+    render json: @posts
   end
 
   def show
