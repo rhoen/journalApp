@@ -1,6 +1,7 @@
-; if (typeof Journal === "undefined") {
-  window.Journal = {};
-}
-Journal.Post = Backbone.Model.extend ({
-  urlRoot: '/posts'
+JournalApp.Models.Post = Backbone.Model.extend ({
+  urlRoot: '/posts',
+
+  toJSON: function () {
+    return { post: _.clone(this.attributes) };
+  }
 });

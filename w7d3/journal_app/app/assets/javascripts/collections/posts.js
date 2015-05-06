@@ -1,8 +1,4 @@
-; if (typeof Journal === "undefined") {
-  window.Journal = {};
-}
-
-Journal.Posts = Backbone.Collection.extend ({
+JournalApp.Collections.Posts = Backbone.Collection.extend ({
   model: Journal.Post,
   url: Journal.Post.urlRoot,
 
