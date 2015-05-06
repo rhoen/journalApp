@@ -1,9 +1,7 @@
-<ul>
-  <% console.log('hello world'); %>
-  <% posts.forEach(function(post) { %>
-    <li>
-      <h1><%= post.title %></h1>
-      <p><%= post.body %></p>
-    </li>
-  <% }); %>
-</ul>
+
+<% posts.forEach(function(post) { %>
+  <li>
+    <h1><%= post.get('title') %></h1>
+    <p><%= post.get('body') %></p>
+  </li>
+<% }); %>
