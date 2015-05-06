@@ -1,10 +1,10 @@
-if (!Journal) {
+; if (typeof Journal === "undefined") {
   window.Journal = {};
 }
 
-Journal.Posts = Backbone.Collections.extend ({
+Journal.Posts = Backbone.Collection.extend ({
   model: Journal.Post,
-  url: this.model.urlRoot,
+  url: Journal.Post.urlRoot,
 
   getOrFetch: function(id) {
     var post = this.get(id);
