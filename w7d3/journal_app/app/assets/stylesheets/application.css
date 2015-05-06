@@ -16,11 +16,19 @@ header h1 {
   font-weight: 700;
 }
 
+body {
+  /* background: blue; */
+}
+
 .journal-app {
   display: block;
-  position: relative;
+  position: absolute;
   border: 2px solid black;
   background: #ccc;
+  top: 97px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .clearfix:after {
@@ -29,10 +37,24 @@ header h1 {
   clear: both;
 }
 
-.sidebar {
-  border: 2px solid black;
+/* .line {
+  border-right: 2px solid black;
   display: block;
-  float: left;
+  position: absolute;
+  top: 97px;
+  left: 242px;
+  z-index: 1;
+  bottom: 0;
+} */
+
+.sidebar {
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
   background: #eee;
   width: 200px;
   padding: 20px;
@@ -41,6 +63,10 @@ header h1 {
 .content {
   display: block;
   padding: 20px;
-  margin-left: 226px;
-  /* background: yellow; */
+  position: absolute;
+  left: 245px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #ccc;
 }
